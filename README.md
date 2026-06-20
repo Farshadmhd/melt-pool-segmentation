@@ -83,7 +83,5 @@ The trained Attention U-Net model achieves robust extraction of the melt-pool bo
 Below is an overview of the training and validation metrics over the epochs:
 ![Training Metrics](./assets/meltpool_segmentation_model34_metrics_plot.png)
 
-* **Dice Coefficient:** TODO
-* **Intersection over Union (IoU):** TODO 
-* **Precision:** TODO
+
 
