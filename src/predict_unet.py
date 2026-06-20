@@ -5,6 +5,14 @@ from skimage.io import imread, imsave
 from skimage.transform import resize
 from skimage import img_as_float32
 from sklearn.metrics import precision_score, recall_score, jaccard_score
+import argparse
+
+# Parse command-line arguments
+parser = argparse.ArgumentParser(description='Predict using Attention U-Net for melt-pool segmentation.')
+parser.add_argument('--model-path', type=str, default='/work/cf_farshad/meltpool_segmentation_model33.h5', help='Path to the trained model.')
+parser.add_argument('--source-folder', type=str, default='/work/cf_farshad/Label/useful', help='Path to images for prediction.')
+parser.add_argument('--output-folder', type=str, default='/work/cf_farshad/Label/Prediction_33', help='Path to save predictions and metrics.')
+args = parser.parse_args()
 
 # Define the custom metrics
 def dice_coefficient(y_true, y_pred, smooth=1):
@@ -85,9 +93,9 @@ def calculate_metrics(y_true, y_pred):
     return precision, recall, iou
 
 # Define paths
-model_path = '/work/cf_farshad/meltpool_segmentation_model33.h5'  # Updated to match your training script
-source_folder = '/work/cf_farshad/Label/useful'
-output_folder = '/work/cf_farshad/Label/Prediction_33'
+model_path = args.model_path
+source_folder = args.source_folder
+output_folder = args.output_folder
 
 # Load the trained model
 model = load_model(model_path)

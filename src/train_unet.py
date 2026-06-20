@@ -11,6 +11,14 @@ from skimage import img_as_float32
 from tensorflow.keras import backend as K
 import matplotlib.pyplot as plt
 from tensorflow.keras.callbacks import ReduceLROnPlateau
+import argparse
+
+# Parse command-line arguments
+parser = argparse.ArgumentParser(description='Train Attention U-Net for melt-pool segmentation.')
+parser.add_argument('--train-path', type=str, default='/work/cf_farshad/Label/Train_orginal', help='Path to training images.')
+parser.add_argument('--label-path', type=str, default='/work/cf_farshad/Label/Mask', help='Path to corresponding masks.')
+parser.add_argument('--model-save-path', type=str, default='/work/cf_farshad/meltpool_segmentation_model34.h5', help='Path to save the trained model.')
+args = parser.parse_args()
 
 # Set environment variables to allow TensorFlow to automatically tune the best algorithm
 os.environ['TF_CUDNN_USE_AUTOTUNE'] = '1'
@@ -130,8 +138,8 @@ def attention_unet(input_size=(768, 1200, 1)):
 TARGET_WIDTH = 1200  # Resize target width
 TARGET_HEIGHT = 768  # Resize target height
 IMG_CHANNELS = 1  # Set to 1 for grayscale images
-TRAIN_PATH = '/work/cf_farshad/Label/Train_orginal'  # Update this path
-LABEL_PATH = '/work/cf_farshad/Label/Mask'   # Update this path
+TRAIN_PATH = args.train_path
+LABEL_PATH = args.label_path
 
 def load_data(train_path, label_path, target_height=768, target_width=1200):
     X = []
@@ -198,7 +206,7 @@ with tf.device('/GPU:0'):  # Specify GPU
                         callbacks=[reduce_lr])
 
 # Save the model
-model_save_path = '/work/cf_farshad/meltpool_segmentation_model34.h5'  # Update this path
+model_save_path = args.model_save_path
 model.save(model_save_path)
 
 # Plot the metrics and save the plots
