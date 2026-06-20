@@ -87,7 +87,3 @@ Below is an overview of the training and validation metrics over the epochs:
 * **Intersection over Union (IoU):** TODO 
 * **Precision:** TODO
 
-Below is an example of the model prediction compared to the original high-speed radiography input.
-
-*(TODO: Add an example image below)*  
-`![Example Prediction](./results/example_prediction.png)`
