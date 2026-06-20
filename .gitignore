@@ -1,0 +1,24 @@
+Mask/
+Prediction/
+Prediction_34/
+Train_orginal/
+__Unet project files/
+
+# Model weights
+*.h5
+*.keras
+*.ckpt
+*.pth
+*.npy
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python caches and system files
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+.env
