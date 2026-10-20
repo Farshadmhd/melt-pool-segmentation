@@ -2,7 +2,7 @@ import os
 import re
 
 # Directory containing the images
-directory = "C:\\Users\\farsh\\Documents\\Mini\\111"
+directory = "path/to/image_folder"
 pad_length = 4  # Adjust the padding length based on the number of images
 
 # Function to extract number from filename
