@@ -35,8 +35,8 @@ def convert_tiff_to_png(source_folder, target_folder):
                 #print(f"Converted and saved: {target_file}")
 
 # Create a sample TIFF image
-source_folder = 'C:\\Users\\farsh\\Documents\Work\\Test data\\crop\\DESY2022-Q4_HV150_7075_d20_002_TD8001_v150_p600_w0_Sw'
-target_folder = 'C:\\Users\\farsh\\Documents\Work\\Test data\\crop\\DESY2022-Q4_HV150_7075_d20_002_TD8001_v150_p600_w0_Sw\\PNG'
+source_folder = 'path/to/tif_folder'
+target_folder = 'path/to/png_folder'
 os.makedirs(source_folder, exist_ok=True)
 
 # Create a simple image
